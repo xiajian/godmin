@@ -12,6 +12,7 @@ module Godmin
   module FormBuilders
     class FilterFormBuilder < BootstrapForm::FormBuilder
       def filter_field(name, options, html_options = {})
+        html_options.merge!(options.delete :html)
         case options[:as]
         when :string
           string_filter_field(name, options, html_options)
