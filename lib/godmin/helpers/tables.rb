@@ -21,6 +21,7 @@ module Godmin
         end
       end
 
+      # NOTE: 外层包裹的 capture 的方法，在参数是征信的时候，直接不显示，
       def column_value(resource, attribute)
         partial_override "#{controller_path}/columns/#{attribute}", resource: resource do
           column_value = resource.send(attribute)
@@ -33,7 +34,7 @@ module Godmin
             column_value = t(column_value.to_s)
           end
 
-          column_value
+          column_value.to_s
         end
       end
     end

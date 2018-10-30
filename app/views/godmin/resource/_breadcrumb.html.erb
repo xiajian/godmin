@@ -3,10 +3,10 @@
     <% if @resource_parents %>
       <% @resource_parents.each do |parent| %>
         <li>
-          <%= link_to parent.class.model_name.human(count: 2), parent.class %>
+          <%= link_to parent.class.model_name.human(count: 2), [:admin, parent.class] %>
         </li>
         <li>
-          <%= link_to parent.to_s, parent %>
+          <%= link_to parent.to_s, [:admin, parent] %>
         </li>
       <% end %>
     <% end %>
@@ -16,7 +16,7 @@
       </li>
     <% else %>
       <li>
-        <%= link_to @resource_class.model_name.human(count: 2), [*@resource_parents, @resource_class] %>
+        <%= link_to @resource_class.model_name.human(count: 2), [:admin, *@resource_parents, @resource_class] %>
       </li>
       <li class="active">
         <% if @resource.new_record? %>

@@ -170,11 +170,11 @@ module Godmin
       end
 
       def redirect_after_save
-        [*@resource_parents, @resource]
+        [:admin, *@resource_parents, @resource]
       end
 
       def redirect_after_destroy
-        [*@resource_parents, resource_class.model_name.route_key.to_sym]
+        [:admin, *@resource_parents, resource_class.model_name.route_key.to_sym]
       end
 
       def redirect_flash_message

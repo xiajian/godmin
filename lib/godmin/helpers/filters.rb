@@ -11,8 +11,11 @@ module Godmin
 
   module FormBuilders
     class FilterFormBuilder < BootstrapForm::FormBuilder
+      # NOTE: use delete only userful in first time, because attribute has delete from object
       def filter_field(name, options, html_options = {})
-        html_options.merge!(options.delete :html)
+        html_option = options.slice :html
+        html_options.merge!(html_option[:html]) if html_option.present?
+        
         case options[:as]
         when :string
           string_filter_field(name, options, html_options)
